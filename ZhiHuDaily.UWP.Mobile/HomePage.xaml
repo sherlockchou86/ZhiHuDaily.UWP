@@ -1,0 +1,209 @@
+﻿<Page
+    x:Class="ZhiHuDaily.UWP.Mobile.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ZhiHuDaily.UWP.Mobile"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pr="using:PullToRefresh.UWP"
+    mc:Ignorable="d"
+    RequestedTheme="{Binding APPTheme}"
+    Loaded="Page_Loaded">
+    <Page.Resources>
+        <local:TopStoryFillColor x:Key="topfill"></local:TopStoryFillColor>
+        <local:ChildrenVisibility x:Key="childrenVisibility"></local:ChildrenVisibility>
+        <local:DateFormat x:Key="dateFormat"></local:DateFormat>
+        <local:ItemBackgroundFormat x:Key="itemBackgroundFormat"></local:ItemBackgroundFormat>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--顶部栏-->
+        <RelativePanel Grid.Row="0"
+                       Padding="2,12,2,12"
+                       Background="{ThemeResource SystemControlHighlightAltListAccentLowBrush}">
+            <TextBlock Name="textbTitle"
+                       Margin="10,0,0,0"
+                       Text="{Binding Title}"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                       FontSize="18">
+            </TextBlock>
+            <TextBlock Name="txtbNetType"
+                       Text="{Binding NetworkTitle}"
+                       RelativePanel.RightOf="textbTitle"
+                       Margin="5,0,0,0"
+                       RelativePanel.AlignTopWith="textbTitle"
+                       FontSize="12">
+            </TextBlock>
+        </RelativePanel>
+        <!--内容-->
+        <ListView Grid.Row="1"
+                  Name="listStories"
+                  SelectionMode="None"
+                  IsItemClickEnabled="True"
+                  ItemClick="listStories_ItemClick"
+                  ItemsSource="{Binding Stories}">
+                  <!--Background="#FFF0F0F0"-->
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Margin" Value="8,4,8,4"></Setter>
+                    <Setter Property="Padding" Value="0"></Setter>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.Header>
+                <RelativePanel Margin="0,0,0,5">
+                    <FlipView Name="TopStories" 
+                              Height="220" 
+                              ItemsSource="{Binding Top_Stories}"
+                              Tapped="TopStories_Tapped">
+                        <FlipView.ItemTemplate>
+                            <DataTemplate>
+                                <RelativePanel>
+                                    <Image RelativePanel.AlignBottomWithPanel="True"
+                                           RelativePanel.AlignTopWithPanel="True"
+                                           RelativePanel.AlignLeftWithPanel="True"
+                                           RelativePanel.AlignRightWithPanel="True"
+                                           Stretch="UniformToFill" 
+                                           Source="{Binding Image}">
+                                    </Image>
+                                    <Border RelativePanel.AlignBottomWithPanel="True"
+                                            RelativePanel.AlignTopWithPanel="True"
+                                            RelativePanel.AlignLeftWithPanel="True"
+                                            RelativePanel.AlignRightWithPanel="True"
+                                            >
+                                        <Border.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0.2">
+                                                <GradientStop Color="Transparent"/>
+                                                <GradientStop Color="#D8000000" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+
+                                    </Border>
+                                    <TextBlock Text="{Binding Title}"
+                                               FontSize="18"
+                                               TextWrapping="Wrap"
+                                               Foreground="White"
+                                               RelativePanel.AlignBottomWithPanel="True"
+                                               Margin="30">
+
+                                    </TextBlock>
+                                </RelativePanel>
+                            </DataTemplate>
+                        </FlipView.ItemTemplate>
+                    </FlipView>
+                    <Ellipse RelativePanel.AlignBottomWithPanel="True"
+                               RelativePanel.AlignHorizontalCenterWithPanel="True"
+                               Width="6"
+                               Height="6"
+                               Margin="10"
+                               Fill="{Binding ElementName=TopStories, Path=SelectedIndex, Converter={StaticResource topfill}, ConverterParameter=2}"
+                               Name="rect31">
+                    </Ellipse>
+                    <Ellipse RelativePanel.AlignBottomWithPanel="True"
+                                       RelativePanel.LeftOf="rect31"
+                                       Width="6"
+                                       Height="6"
+                                       Margin="10"
+                                       Fill="{Binding ElementName=TopStories, Path=SelectedIndex, Converter={StaticResource topfill}, ConverterParameter=1}"
+                                       Name="rect21">
+                    </Ellipse>
+                    <Ellipse RelativePanel.AlignBottomWithPanel="True"
+                                       RelativePanel.LeftOf="rect21"
+                                       Width="6"
+                                       Height="6"
+                                       Margin="10"
+                                       Fill="{Binding ElementName=TopStories, Path=SelectedIndex, Converter={StaticResource topfill}, ConverterParameter=0}"
+                                       Name="rect11">
+                    </Ellipse>
+                    <Ellipse RelativePanel.AlignBottomWithPanel="True"
+                                       RelativePanel.RightOf="rect31"
+                                       Width="6"
+                                       Height="6"
+                                       Margin="10"
+                                       Fill="{Binding ElementName=TopStories, Path=SelectedIndex, Converter={StaticResource topfill}, ConverterParameter=3}"
+                                       Name="rect41">
+                    </Ellipse>
+                    <Ellipse RelativePanel.AlignBottomWithPanel="True"
+                                       RelativePanel.RightOf="rect41"
+                                       Width="6"
+                                       Height="6"
+                                       Margin="10"
+                                       Fill="{Binding ElementName=TopStories, Path=SelectedIndex, Converter={StaticResource topfill}, ConverterParameter=4}"
+                                       Name="rect51">
+                    </Ellipse>
+                </RelativePanel>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="0"
+                            Padding="0"
+                            HorizontalAlignment="Stretch"                      
+                            >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                 <ColumnDefinition Width="*"></ColumnDefinition>
+                                 <ColumnDefinition Width="auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <RelativePanel Grid.Column="0">
+                                <TextBlock 
+                                       FontSize="16"
+                                       TextWrapping="Wrap"
+                                       Text="{Binding Title}"
+                                       Foreground="{Binding Path=Readed,Converter={StaticResource itemBackgroundFormat}}"
+                                       Margin="15,8,5,8">
+                                </TextBlock>
+                                <TextBlock Text="&#xE0B4;"
+                                           Visibility="{Binding Path=Favorite,Converter={StaticResource childrenVisibility}}"
+                                           Foreground="{ThemeResource SystemControlHighlightAltListAccentLowBrush}"
+                                           FontFamily="Segoe MDL2 Assets"
+                                           Margin="3,3,0,0"
+                                           RelativePanel.AlignLeftWithPanel="True"
+                                           RelativePanel.AlignTopWithPanel="True"
+                                           Name="isFavorite"
+                                           FontSize="13">
+                                </TextBlock>
+
+                                <TextBlock Text="{Binding Path=Date,Converter={StaticResource dateFormat}}"
+                                           Visibility="{Binding Path=Separator,Converter={StaticResource childrenVisibility}}"
+                                           FontSize="12"
+                                           Foreground="Gray"
+                                           Margin="15,0,0,3"
+                                           RelativePanel.AlignBottomWithPanel="True"
+                                           RelativePanel.AlignHorizontalCenterWithPanel="True">
+
+                                </TextBlock>
+                            </RelativePanel>
+
+                            <RelativePanel Grid.Column="1" Padding="0,8,8,8">
+                                <Image Width="60"
+                                    Source="{Binding Image}">
+                                </Image>
+                                <Border RelativePanel.AlignRightWithPanel="True"
+                                    RelativePanel.AlignBottomWithPanel="True"
+                                    Visibility="{Binding Path=MultiPic,Converter={StaticResource childrenVisibility}}"
+                                    Background="#99000000">
+                                    <TextBlock Text="多图"
+                                            FontSize="11"
+                                            Foreground="White"
+                                            Margin="4,1,4,3">
+                                    </TextBlock>
+                                </Border>
+                            </RelativePanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ProgressRing Grid.Row="1"
+                      Margin="0,10,0,0"
+                      Height="60"
+                      Width="60"
+                      IsActive="{Binding IsLoading}">
+            
+        </ProgressRing>
+    </Grid>
+</Page>

@@ -1,0 +1,178 @@
+﻿<Page
+    x:Class="ZhiHuDaily.UWP.Mobile.ThemePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ZhiHuDaily.UWP.Mobile"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <local:TopStoryFillColor x:Key="topfill"></local:TopStoryFillColor>
+        <local:ChildrenVisibility x:Key="childrenVisibility"></local:ChildrenVisibility>
+        <local:ItemBackgroundFormat x:Key="itemBackgroundFormat"></local:ItemBackgroundFormat>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--顶部栏-->
+        <RelativePanel Grid.Row="0"
+                       Padding="2,12,2,12"
+                       Background="{ThemeResource SystemControlHighlightAltListAccentLowBrush}">
+            <TextBlock Name="textbTitle"
+                       Text="{Binding Title}"
+                       Margin="10,0,0,0"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                       FontSize="18">
+            </TextBlock>
+        </RelativePanel>
+        <!--内容-->
+        <ListView Grid.Row="1"
+                  Name="listStories"
+                  ItemsSource="{Binding Stories}"
+                  SelectionMode="None"
+                  IsItemClickEnabled="True"
+                  ItemClick="listStories_ItemClick">
+            <ListView.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <RelativePanel Height="220"
+                                   Grid.Row="0">
+                        <Image RelativePanel.AlignBottomWithPanel="True"
+                               RelativePanel.AlignTopWithPanel="True"
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.AlignRightWithPanel="True"
+                               Name="imgTheme"
+                               Stretch="UniformToFill"
+                               Source="{Binding BackImage}">
+                        </Image>
+                        <Border RelativePanel.AlignBottomWithPanel="True"
+                                        RelativePanel.AlignTopWithPanel="True"
+                                        RelativePanel.AlignLeftWithPanel="True"
+                                        RelativePanel.AlignRightWithPanel="True"
+                                        >
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0.2">
+                                    <GradientStop Color="Transparent"/>
+                                    <GradientStop Offset="1" Color="#4C000000"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                        </Border>
+                        <TextBlock Text="{Binding Description}"
+                                   FontSize="18"
+                                   TextWrapping="Wrap"
+                                   Foreground="White"
+                                   RelativePanel.AlignBottomWithPanel="True"
+                                   Name="txtbThemeDescription"
+                                   Margin="25">
+                        </TextBlock>
+                        <TextBlock RelativePanel.AlignRightWithPanel="True"
+                                   RelativePanel.AlignBottomWithPanel="True"
+                                   Margin="0,0,15,10"
+                                   FontSize="13"
+                                   Foreground="White"
+                                   Text="{Binding BackImageSource}">
+                            
+                        </TextBlock>
+                    </RelativePanel>
+                    <StackPanel Grid.Row="1"
+                                Margin="12,5,5,5"
+                                Orientation="Horizontal">
+                        <TextBlock Text="主编"
+                                   FontSize="14"
+                                   VerticalAlignment="Center"
+                                   Foreground="Gray">
+
+                        </TextBlock>
+                        <GridView Margin="3,3,3,2"
+                                  SelectionMode="None"
+                                  Tapped="gridEditors_Tapped"
+                                  ItemsSource="{Binding Editors}"
+                                  Name="gridEditors">
+                            <GridView.ItemContainerStyle>
+                                <Style TargetType="GridViewItem">
+                                    <Setter Property="Margin" Value="3,0,3,0"></Setter>
+                                    <Setter Property="MinWidth" Value="10"></Setter>
+                                    <Setter Property="MinHeight" Value="10"></Setter>
+                                </Style>
+                            </GridView.ItemContainerStyle>
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                    <Image Width="20" Height="20" Source="{Binding Avatar}">
+
+                                    </Image>
+                                    </Grid>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+                    </StackPanel>
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <RelativePanel Grid.Column="0">
+                            <TextBlock 
+                                       FontSize="16"
+                                       TextWrapping="Wrap"
+                                       Text="{Binding Title}"
+                                       Foreground="{Binding Path=Readed,Converter={StaticResource itemBackgroundFormat}}"
+                                       Margin="15,8,5,8">
+                            </TextBlock>
+                            <TextBlock Text="&#xE0B4;"
+                                           Visibility="{Binding Path=Favorite,Converter={StaticResource childrenVisibility}}"
+                                           Foreground="{ThemeResource SystemControlHighlightAltListAccentLowBrush}"
+                                           FontFamily="Segoe MDL2 Assets"
+                                           Margin="3,3,0,0"
+                                           RelativePanel.AlignLeftWithPanel="True"
+                                           RelativePanel.AlignTopWithPanel="True"
+                                           FontSize="13">
+                            </TextBlock>
+                        </RelativePanel>
+
+                        <RelativePanel Grid.Column="1" Padding="0,8,8,8">
+                            <Image Width="60"
+                                    Source="{Binding Image}">
+                            </Image>
+                            <Border RelativePanel.AlignRightWithPanel="True"
+                                    RelativePanel.AlignBottomWithPanel="True"
+                                    Visibility="{Binding Path=MultiPic,Converter={StaticResource childrenVisibility}}"
+                                    Background="#99000000">
+                                <TextBlock Text="多图"
+                                            FontSize="11"
+                                            Foreground="White"
+                                            Margin="4,1,4,3">
+                                </TextBlock>
+                            </Border>
+                        </RelativePanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Margin" Value="8,4,8,4"></Setter>
+                    <Setter Property="Padding" Value="0"></Setter>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                    <Setter Property="MinHeight" Value="0"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <ProgressRing Grid.Row="1"
+                      Height="60"
+                      Width="60"
+                      IsActive="{Binding IsLoading}">
+            
+        </ProgressRing>
+    </Grid>
+</Page>

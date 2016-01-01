@@ -1,0 +1,195 @@
+﻿<Page
+    x:Class="ZhiHuDaily.UWP.Mobile.SettingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ZhiHuDaily.UWP.Mobile"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--顶部栏-->
+        <RelativePanel Grid.Row="0"
+                       Padding="2,12,2,12"
+                       Background="{ThemeResource SystemControlHighlightAltListAccentLowBrush}">
+            <TextBlock Name="textbTitle"
+                       Margin="10,0,0,0"
+                       Text="设置选项"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                       FontSize="18">
+            </TextBlock>
+        </RelativePanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Padding="10">
+                <TextBlock Text="常规" FontWeight="Bold">
+                    
+                </TextBlock>
+                <Rectangle Fill="Gray"
+                           Margin="0,4,0,0"
+                           Height="1">
+                    
+                </Rectangle>
+            </StackPanel>
+            <StackPanel Grid.Row="1"
+                        Padding="10"
+                        >
+                <RelativePanel>
+                    <TextBlock Text="夜间模式" 
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.AlignVerticalCenterWithPanel="True">
+
+                    </TextBlock>
+                    <ToggleSwitch RelativePanel.AlignRightWithPanel="True"
+                                  Margin="0,0,20,0"
+                                  MinWidth="0"
+                                  IsOn="{Binding Path=DarkMode,Mode=TwoWay}"
+                                  Name="tsDarkMode"
+                                  Toggled="tsDarkMode_Toggled"
+                                  RelativePanel.AlignVerticalCenterWithPanel="True">
+
+                    </ToggleSwitch>
+                </RelativePanel>
+            </StackPanel>
+            <StackPanel Grid.Row="2"
+                        Padding="10"
+                        >
+                <RelativePanel>
+                    <TextBlock Text="无图模式(2g/3g不下载图片)"
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.AlignVerticalCenterWithPanel="True">
+
+                    </TextBlock>
+                    <ToggleSwitch RelativePanel.AlignRightWithPanel="True"
+                                  MinWidth="0"
+                                  Name="tsNoImagesMode"
+                                  IsOn="{Binding NoImagesMode}"
+                                  Toggled="tsNoImagesMode_Toggled"
+                                  Margin="0,0,20,0"
+                                  RelativePanel.AlignVerticalCenterWithPanel="True">
+
+                    </ToggleSwitch>
+                </RelativePanel>
+            </StackPanel>
+            <StackPanel Grid.Row="3"
+                        Padding="10"
+                        >
+                <RelativePanel>
+                    <TextBlock Text="大字号"
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.AlignVerticalCenterWithPanel="True">
+
+                    </TextBlock>
+                    <ToggleSwitch RelativePanel.AlignRightWithPanel="True"
+                                  Margin="0,0,20,0"
+                                  IsOn="{Binding BigFont}"
+                                  Name="tsBigFont"
+                                  Toggled="tsBigFont_Toggled"
+                                  RelativePanel.AlignVerticalCenterWithPanel="True" MinWidth="0">
+
+                    </ToggleSwitch>
+                </RelativePanel>
+            </StackPanel>
+            <StackPanel Grid.Row="4"
+                        Padding="10">
+                <TextBlock Text="其他" FontWeight="Bold">
+                    
+                </TextBlock>
+                <Rectangle Fill="Gray" Height="1" Margin="0,4,0,0">
+                    
+                </Rectangle>
+            </StackPanel>
+            <StackPanel Grid.Row="5"
+                        Padding="10">
+                <RelativePanel>
+                    <TextBlock Text="{Binding ClearCacheTitle,TargetNullValue='清除缓存[计算中...]'}"
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.AlignVerticalCenterWithPanel="True">
+
+                    </TextBlock>
+                    <Button RelativePanel.AlignRightWithPanel="True"
+                            Background="Transparent"
+                            Name="btnClearChache"
+                            Click="btnClearChache_Click"
+                            Content="清除"
+                            Margin="0,0,10,0">
+                        
+                    </Button>
+                </RelativePanel>
+            </StackPanel>
+            <StackPanel Grid.Row="6"
+                        Padding="10"
+                       >
+                <RelativePanel>
+                    <TextBlock Text="关于作者"
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.AlignVerticalCenterWithPanel="True">
+
+                    </TextBlock>
+                    <HyperlinkButton Content="推荐APP"
+                                     Name="DiggAPPs"
+                                     NavigateUri="ms-windows-store://publisher/?name=周见智"
+                                     Margin="0,0,20,0"
+                                     RelativePanel.AlignRightWithPanel="True">
+                        
+                    </HyperlinkButton>
+                    <HyperlinkButton Content="cnblogs"
+                                     Name="link_cnblogs"
+                                     Margin="0,0,20,0"
+                                     NavigateUri="http://www.cnblogs.com/xiaozhi_5638/"
+                                     RelativePanel.LeftOf="DiggAPPs"
+                                     RelativePanel.AlignVerticalCenterWithPanel="True"
+                                     Background="Transparent">
+
+                    </HyperlinkButton>
+                    <HyperlinkButton Content="github"
+                                     RelativePanel.AlignVerticalCenterWithPanel="True"
+                                     RelativePanel.LeftOf="link_cnblogs"
+                                     NavigateUri="https://www.github.com/sherlockchou86/"
+                                     Margin="0,0,10,0"
+                                     Background="Transparent">
+                    </HyperlinkButton>
+                </RelativePanel>
+            </StackPanel>
+            <StackPanel Grid.Row="7"
+                        Padding="10"
+                       >
+                <RelativePanel>
+                    <TextBlock Text="留下过夜费"
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.AlignVerticalCenterWithPanel="True">
+
+                    </TextBlock>
+                    <Button RelativePanel.AlignRightWithPanel="True"
+                            Background="Transparent"
+                            Name="btnVote"
+                            Content="去评分"
+                            Click="btnVote_Click"
+                            Margin="0,0,10,0">
+                        
+                    </Button>
+                </RelativePanel>
+            </StackPanel>
+        </Grid>
+        <ProgressRing Height="30"
+                      Width="30"
+                      Grid.Row="5"
+                      IsActive="{Binding IsBusy}">
+            
+        </ProgressRing>
+    </Grid>
+</Page>

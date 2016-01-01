@@ -1,0 +1,115 @@
+﻿<Page
+    x:Class="ZhiHuDaily.UWP.Mobile.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ZhiHuDaily.UWP.Mobile"
+    xmlns:custom_controls="using:ZhiHuDaily.UWP.Core.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    RequestedTheme="{Binding APPTheme}"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <local:LogoBackgroundFormat x:Key="logoBackgroundFormat"></local:LogoBackgroundFormat>
+    </Page.Resources>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.Content>
+                <StackPanel Orientation="Horizontal">
+
+                </StackPanel>
+            </CommandBar.Content>
+            <AppBarButton Name="appbtnBack" Icon="Back" Label="后退" Click="appbtnBack_Click"/>
+            <AppBarButton Name="appbtnRefresh" Icon="Refresh" Label="刷新" Click="appbtnRefresh_Click"/>
+            <AppBarButton Name="appbtnNavigation" Icon="List" Label="导航" Click="appbtnNavigation_Click"/>
+            <AppBarButton Name="appbtnCollection" Label="收藏" Icon="SolidStar" Click="appbtnCollection_Click"/>
+            <AppBarButton Name="appbtnSetting" Icon="Setting" Label="设置" Click="appbtnSetting_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <custom_controls:SwipeableSplitView Name="sptViewNavigation" 
+                                            IsPanSelectorEnabled="False"
+                                            DisplayMode="Overlay"
+                                            OpenPaneLength="200">
+            <SplitView.Pane>
+                <ListView Name="listTheme" 
+                        ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                        ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                          IsItemClickEnabled="False"
+                        SelectionMode="Single"
+                        SelectionChanged="listTheme_SelectionChanged"
+                        ItemsSource="{Binding Themes}"
+                        SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
+                        >
+                    <ListView.Header>
+                        <RelativePanel Background="{ThemeResource SystemControlHighlightAltListAccentLowBrush}"
+                                       >
+                            <Image Name="imgLogoBack"
+                                   Stretch="UniformToFill"
+                                   Height="120"
+                                   Source="{Binding Path=LogoBack}">
+                            </Image>
+                            <StackPanel Orientation="Horizontal"
+                                        RelativePanel.AlignTopWithPanel="True"
+                                        RelativePanel.AlignLeftWithPanel="True"
+                                        Margin="10,10,0,50">
+                                <Image Name="imgLogo"
+                                        Width="35"
+                                        Height="35"
+                                        Source="Assets\logo.png">
+
+                                </Image>
+                                <TextBlock Name="txtbTitle"
+                                        Text="{Binding Title}"
+                                        Margin="10,0,0,0"
+                                        FontSize="20"
+                                        VerticalAlignment="Center">
+                                </TextBlock>
+                            </StackPanel>
+                            <TextBlock RelativePanel.AlignBottomWithPanel="True"
+                                       RelativePanel.AlignRightWithPanel="True"
+                                       TextWrapping="Wrap"
+                                       Text="{Binding SubTitle}"
+                                       Margin="0,0,20,30">
+
+                            </TextBlock>
+                        </RelativePanel>
+                    </ListView.Header>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <RelativePanel Margin="0,8,0,8">
+                                <TextBlock Text="{Binding Name}"
+                                            FontSize="16"
+                                            RelativePanel.AlignLeftWithPanel="True"
+                                            RelativePanel.AlignVerticalCenterWithPanel="True">
+
+                                </TextBlock>
+                                <TextBlock Text=">" 
+                                           FontSize="16"
+                                           Margin="0,0,10,0"
+                                           RelativePanel.AlignRightWithPanel="True"
+                                           RelativePanel.AlignVerticalCenterWithPanel="True">
+
+                                </TextBlock>
+                            </RelativePanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Frame Name="frmPages" Navigated="frmPages_Navigated">
+
+                </Frame>
+            </SplitView.Content>
+        </custom_controls:SwipeableSplitView>
+        <ProgressRing Width="60"
+                      Height="60"
+                      IsActive="{Binding IsLoading}">
+
+        </ProgressRing>
+    </Grid>
+</Page>

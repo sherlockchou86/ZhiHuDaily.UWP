@@ -1,0 +1,197 @@
+﻿<Page
+    x:Class="ZhiHuDaily.UWP.Mobile.StoryPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ZhiHuDaily.UWP.Mobile"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <local:ChildrenVisibilityByString x:Key="childVisibilityByString"></local:ChildrenVisibilityByString>
+        <local:CollectionButtonTextFormat x:Key="collectionButtonTextFormat"></local:CollectionButtonTextFormat>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--顶部栏-->
+        <RelativePanel Grid.Row="0"
+                       Padding="2,8,2,8"
+                       Background="{ThemeResource SystemControlHighlightAltListAccentLowBrush}">
+            <Button Name="btnShare"
+                    Background="Transparent"
+                    Padding="4,4,4,4"
+                    Content="&#xE72D;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="20"
+                    RelativePanel.LeftOf="btnCollection"
+                    RelativePanel.AlignVerticalCenterWithPanel="True">
+                <Button.Flyout>
+                    <Flyout>
+                        <StackPanel>
+                            <ListView Name="lstShare" SelectionMode="None" IsItemClickEnabled="True" ItemClick="lstShare_ItemClick">
+                                <ListViewItem Padding="0" Name="lstItemSystemShare" MinHeight="0" Height="30">
+                                    <StackPanel Orientation="Horizontal"  Tag="0">
+                                        <TextBlock Text="&#xE72D;" FontFamily="Segoe MDL2 Assets" FontSize="20" Margin="4,0,0,0">
+                                            
+                                        </TextBlock>
+                                        <TextBlock Text="内置分享" Padding="6,0,0,0">
+                                            
+                                        </TextBlock>
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Padding="0" Name="lstItemTimelineShare" MinHeight="0" Height="30">
+                                    <StackPanel Orientation="Horizontal" Tag="1">
+                                        <Image Source="Assets\timeline.png" Width="26">
+
+                                        </Image>
+                                        <TextBlock Text="分享到朋友圈" VerticalAlignment="Center" Margin="4,0,0,0">
+
+                                        </TextBlock>
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Padding="0" Name="lstItemSessionShare" MinHeight="0" Height="30">
+                                    <StackPanel Orientation="Horizontal" Tag="2">
+                                        <Image Source="Assets\session.png" Width="26" Margin="4,0,0,0">
+
+                                        </Image>
+                                        <TextBlock Text="分享给微信好友" VerticalAlignment="Center">
+
+                                        </TextBlock>
+                                    </StackPanel>
+                                </ListViewItem>
+                            </ListView>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <Button Name="btnCollection"
+                    Click="btnCollection_Click"
+                    Background="Transparent"
+                    Padding="4,4,4,4"
+                    FontSize="20"
+                    RelativePanel.LeftOf="btnComment"
+                    RelativePanel.AlignVerticalCenterWithPanel="True">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="20" Text="&#xE1CE;" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock FontSize="12" Text="{Binding Path=Favorite,Converter={StaticResource collectionButtonTextFormat}}" VerticalAlignment="Bottom"></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Name="btnComment"
+                    Click="btnComment_Click"
+                    Background="Transparent"
+                    Padding="4,4,4,4"
+                    RelativePanel.LeftOf="btnLike"
+                    RelativePanel.AlignVerticalCenterWithPanel="True">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="20" VerticalAlignment="Center">&#xE134;</TextBlock>
+                    <TextBlock FontSize="15" VerticalAlignment="Center" Text="{Binding Path=Comments, TargetNullValue='...'}"></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Name="btnLike"
+                    Background="Transparent"
+                    Padding="4,4,4,4"
+                    RelativePanel.AlignRightWithPanel="True"
+                    RelativePanel.AlignVerticalCenterWithPanel="True">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="20" VerticalAlignment="Center">&#xE19F;</TextBlock>
+                    <TextBlock FontSize="15" VerticalAlignment="Center" Text="{Binding Path=Popularities, TargetNullValue='...'}"></TextBlock>
+                </StackPanel>
+            </Button>
+        </RelativePanel>
+        <!--内容-->
+        <ScrollViewer Grid.Row="1"
+                      >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <RelativePanel Grid.Row="0" Visibility="{Binding Path=Image,Converter={StaticResource childVisibilityByString}}">
+                    <Image RelativePanel.AlignBottomWithPanel="True"
+                            RelativePanel.AlignTopWithPanel="True"
+                            RelativePanel.AlignLeftWithPanel="True"
+                            RelativePanel.AlignRightWithPanel="True"
+                            Name="imgStoryPic"
+                            Height="220"
+                            Stretch="UniformToFill"
+                            Source="{Binding Image}">
+                    </Image>
+                    <Border RelativePanel.AlignBottomWithPanel="True"
+                                    RelativePanel.AlignTopWithPanel="True"
+                                    RelativePanel.AlignLeftWithPanel="True"
+                                    RelativePanel.AlignRightWithPanel="True"
+                                    >
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0.2">
+                                <GradientStop Color="Transparent"/>
+                                <GradientStop Offset="1" Color="#4C000000"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                    </Border>
+                    <TextBlock Text="{Binding Title}"
+                                FontSize="18"
+                                TextWrapping="Wrap"
+                                Foreground="White"
+                                RelativePanel.AlignBottomWithPanel="True"
+                                Name="txtbStoryTitle"
+                                Margin="25">
+                    </TextBlock>
+                    <TextBlock RelativePanel.AlignRightWithPanel="True"
+                               RelativePanel.AlignBottomWithPanel="True"
+                               Margin="0,0,15,10"
+                               FontSize="13"
+                               Foreground="White"
+                               Name="txtbStoryImageSource"
+                               Text="{Binding ImageSource}">
+
+                    </TextBlock>
+                </RelativePanel>
+                <StackPanel Grid.Row="1"
+                        Margin="12,5,12,8"
+                        Orientation="Horizontal">
+                    <TextBlock Text="推荐者"
+                                FontSize="14"
+                                VerticalAlignment="Center"
+                                Foreground="Gray">
+
+                    </TextBlock>
+                    <GridView Margin="3,3,3,2"
+                              SelectionMode="None"
+                              ItemsSource="{Binding RecommenderAvatars}"
+                              Tapped="gridrecommenders_Tapped"
+                              Name="gridrecommenders">
+                        <GridView.ItemContainerStyle>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="Margin" Value="3,0,3,0"></Setter>
+                                <Setter Property="MinWidth" Value="0"></Setter>
+                                <Setter Property="MinHeight" Value="0"></Setter>
+                            </Style>
+                        </GridView.ItemContainerStyle>
+                        <GridView.ItemTemplate>
+                            <DataTemplate>
+                                <Image Width="20" Height="20" Source="{Binding}">
+
+                                </Image>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
+                </StackPanel>
+                <WebView Name="webStoryContent"
+                         Grid.Row="2"
+                         local:ExtensionHTMLStringProperties.HtmlString="{Binding BodyHtml}"
+                         >
+                </WebView>
+            </Grid>
+        </ScrollViewer>
+        <ProgressRing Grid.Row="1"
+                      Width="60"
+                      Height="60"
+                      IsActive="{Binding IsLoading}">
+            
+        </ProgressRing>
+    </Grid>
+</Page>

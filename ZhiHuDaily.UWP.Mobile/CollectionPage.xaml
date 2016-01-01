@@ -1,0 +1,107 @@
+﻿<Page
+    x:Class="ZhiHuDaily.UWP.Mobile.CollectionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ZhiHuDaily.UWP.Mobile"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <local:TopStoryFillColor x:Key="topfill"></local:TopStoryFillColor>
+        <local:ChildrenVisibility x:Key="childrenVisibility"></local:ChildrenVisibility>
+        <local:DateFormat x:Key="dateFormat"></local:DateFormat>
+        <local:ItemBackgroundFormat x:Key="itemBackgroundFormat"></local:ItemBackgroundFormat>
+
+        <MenuFlyout x:Key="contextMenu">
+            <MenuFlyoutItem Text="查看文章" Name="menuScan" Click="menuScan_Click">
+                
+            </MenuFlyoutItem>
+            <MenuFlyoutItem Text="取消收藏" Name="menuRemove" Click="menuRemove_Click">
+                
+            </MenuFlyoutItem>
+        </MenuFlyout>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--顶部栏-->
+        <RelativePanel Grid.Row="0"
+                       Padding="2,12,2,12"
+                       Background="{ThemeResource SystemControlHighlightAltListAccentLowBrush}">
+            <TextBlock Name="textbTitle"
+                       Margin="10,0,0,0"
+                       Text="我的收藏"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                       FontSize="18">
+            </TextBlock>
+            <TextBlock Name="txtbCount"
+                       RelativePanel.RightOf="textbTitle"
+                       RelativePanel.AlignTopWith="textbTitle"
+                       Margin="5,0,0,0"
+                       Text="{Binding CollectionCount}"
+                       FontSize="13">
+                
+            </TextBlock>
+        </RelativePanel>
+        <!--内容-->
+        <ListView Name="listCollections"
+                  Grid.Row="1"
+                  Padding="0,5,0,0"
+                  ItemsSource="{Binding CollectionStories}"
+                  SelectionMode="None"
+                  IsItemClickEnabled="True"                
+                  ItemClick="listCollections_ItemClick">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Margin" Value="8,4,8,4"></Setter>
+                    <Setter Property="Padding" Value="0"></Setter>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RightTapped="Border_RightTapped">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <RelativePanel Grid.Column="0">
+                            <TextBlock 
+                                       FontSize="16"
+                                       TextWrapping="Wrap"
+                                       Text="{Binding Title}"
+                                       Foreground="{Binding Path=Readed,Converter={StaticResource itemBackgroundFormat}}"
+                                       Margin="15,8,5,8">
+                            </TextBlock>
+                            <TextBlock Text="&#xE0B4;"
+                                           Visibility="{Binding Path=Favorite,Converter={StaticResource childrenVisibility}}"
+                                           Foreground="{ThemeResource SystemControlHighlightAltListAccentLowBrush}"
+                                           FontFamily="Segoe MDL2 Assets"
+                                           Margin="3,3,0,0"
+                                           RelativePanel.AlignLeftWithPanel="True"
+                                           RelativePanel.AlignTopWithPanel="True"
+                                           Name="isFavorite"
+                                           FontSize="13">
+                            </TextBlock>
+                        </RelativePanel>
+
+                        <RelativePanel Grid.Column="1" Padding="0,8,8,8">
+                            <Image Width="60"
+                                    Source="{Binding Image}">
+                            </Image>
+                        </RelativePanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ProgressRing Grid.Row="1"
+                      Height="60"
+                      Width="60"
+                      IsActive="{Binding IsLoading}">
+            
+        </ProgressRing>
+    </Grid>
+</Page>

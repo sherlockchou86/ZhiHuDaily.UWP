@@ -1,0 +1,2 @@
+MainPackage=E:\周智2015\githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\bin\x64\Release\Upload\ZhiHuDaily.UWP.Mobile_1.1.0.0_x64.appx
+SymbolPackage=E:\周智2015\githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\AppPackages\ZhiHuDaily.UWP.Mobile_1.1.0.0\ZhiHuDaily.UWP.Mobile_1.1.0.0_x64.appxsym

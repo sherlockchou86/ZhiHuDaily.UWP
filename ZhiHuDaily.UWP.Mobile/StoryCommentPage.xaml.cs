@@ -69,7 +69,7 @@ namespace ZhiHuDaily.UWP.Mobile
         {
             long t_s = long.Parse(value.ToString());
             DateTime t = DateTime.Parse("1970/1/1").AddSeconds(t_s);
-            return t.AddHours(8).ToString("MM-dd hh:mm", new System.Globalization.CultureInfo("zh-CN"));
+            return t.AddHours(8).ToString("MM-dd HH:mm", new System.Globalization.CultureInfo("zh-CN"));
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

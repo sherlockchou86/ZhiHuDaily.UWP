@@ -1,3 +1,3 @@
-MainPackage=E:\周智2015\githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\bin\ARM\Release\Upload\ZhiHuDaily.UWP.Mobile_1.1.0.0_ARM.appx
-SymbolPackage=E:\周智2015\githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\AppPackages\ZhiHuDaily.UWP.Mobile_1.1.0.0\ZhiHuDaily.UWP.Mobile_1.1.0.0_ARM.appxsym
+MainPackage=E:\周智2015\githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\bin\ARM\Release\Upload\ZhiHuDaily.UWP.Mobile_1.1.1.0_ARM.appx
+SymbolPackage=E:\周智2015\githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\AppPackages\ZhiHuDaily.UWP.Mobile_1.1.1.0\ZhiHuDaily.UWP.Mobile_1.1.1.0_ARM.appxsym
 ResourcePack=E:\周智2015\githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\_language-zh-hans.appx

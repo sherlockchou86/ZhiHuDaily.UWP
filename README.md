@@ -20,6 +20,15 @@
 2. ~~不能评论、点赞、回复~~。
 
 ##**截图**##
+![](https://raw.githubusercontent.com/sherlockchou86/ZhiHuDaily.UWP/master/screenshots/wp_ss_20160101_0002.png)
+
+![](https://raw.githubusercontent.com/sherlockchou86/ZhiHuDaily.UWP/master/screenshots/wp_ss_20160101_0003.png)
+
+![](https://raw.githubusercontent.com/sherlockchou86/ZhiHuDaily.UWP/master/screenshots/wp_ss_20160101_0004.png)
+
+![](https://raw.githubusercontent.com/sherlockchou86/ZhiHuDaily.UWP/master/screenshots/wp_ss_20160101_0005.png)
+
+![](https://raw.githubusercontent.com/sherlockchou86/ZhiHuDaily.UWP/master/screenshots/wp_ss_20160101_0006.png)
 
 ##**注意事项**##
 
@@ -28,4 +37,4 @@
 3. `ZhiHuDaily.UWP.Core`项目包含了Web API的封装、`ViewModel`、`Model`以及一些控件、自增集合、工具类的定义。`ZhiHuDaily.UWP.Mobile`项目
 中只包含View部分的代码以及一些素材。
 
-更多说明请参考博客，[猛戳这里](http://www.cnblogs.com/xiaozhi_5638/)
+更多说明请参考博客，[猛戳这里](http://www.cnblogs.com/xiaozhi_5638/p/5093438.html)

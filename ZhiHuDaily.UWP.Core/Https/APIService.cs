@@ -589,7 +589,7 @@ namespace ZhiHuDaily.UWP.Core.Https
 
                                 if (!await FileHelper.Current.CacheExist(story_id + "_" + index + "_story_recommender_image." + image_ext))  //没有缓存
                                 {
-                                    wb = await GetImage(image);  //下载图片
+                                    wb = await GetImage(r_avatar);  //下载图片
 
                                     if (!r_avatar.Equals(""))
                                     {

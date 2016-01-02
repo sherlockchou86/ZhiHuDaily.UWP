@@ -112,6 +112,7 @@ namespace ZhiHuDaily.UWP.Core.Controls
                 if (_dismissLayer != null)
                 {
                     _dismissLayer.Tapped += OnDismissLayerTapped; ;
+                    _dismissLayer.Visibility = Visibility.Collapsed;
                 }
             }
         }
@@ -430,11 +431,13 @@ namespace ZhiHuDaily.UWP.Core.Controls
         void OnOpenSwipeablePaneCompleted(object sender, object e)
         {
             this.DismissLayer.IsHitTestVisible = true;
+            this.DismissLayer.Visibility = Visibility.Visible;
         }
 
         void OnCloseSwipeablePaneCompleted(object sender, object e)
         {
             this.DismissLayer.IsHitTestVisible = false;
+            this.DismissLayer.Visibility = Visibility.Collapsed;
         }
 
         #endregion

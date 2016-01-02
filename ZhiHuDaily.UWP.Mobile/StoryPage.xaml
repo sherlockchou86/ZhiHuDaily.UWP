@@ -101,16 +101,14 @@
             </Button>
         </RelativePanel>
         <!--内容-->
-        <ScrollViewer Grid.Row="1"
-                      >
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <RelativePanel Grid.Row="0" Visibility="{Binding Path=Image,Converter={StaticResource childVisibilityByString}}">
-                    <Image RelativePanel.AlignBottomWithPanel="True"
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <RelativePanel Grid.Row="0" Visibility="{Binding Path=Image,Converter={StaticResource childVisibilityByString}}">
+                <Image RelativePanel.AlignBottomWithPanel="True"
                             RelativePanel.AlignTopWithPanel="True"
                             RelativePanel.AlignLeftWithPanel="True"
                             RelativePanel.AlignRightWithPanel="True"
@@ -118,29 +116,29 @@
                             Height="220"
                             Stretch="UniformToFill"
                             Source="{Binding Image}">
-                    </Image>
-                    <Border RelativePanel.AlignBottomWithPanel="True"
+                </Image>
+                <Border RelativePanel.AlignBottomWithPanel="True"
                                     RelativePanel.AlignTopWithPanel="True"
                                     RelativePanel.AlignLeftWithPanel="True"
                                     RelativePanel.AlignRightWithPanel="True"
                                     >
-                        <Border.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0.2">
-                                <GradientStop Color="Transparent"/>
-                                <GradientStop Offset="1" Color="#4C000000"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0.2">
+                            <GradientStop Color="Transparent"/>
+                            <GradientStop Offset="1" Color="#4C000000"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
 
-                    </Border>
-                    <TextBlock Text="{Binding Title}"
+                </Border>
+                <TextBlock Text="{Binding Title}"
                                 FontSize="18"
                                 TextWrapping="Wrap"
                                 Foreground="White"
                                 RelativePanel.AlignBottomWithPanel="True"
                                 Name="txtbStoryTitle"
                                 Margin="25">
-                    </TextBlock>
-                    <TextBlock RelativePanel.AlignRightWithPanel="True"
+                </TextBlock>
+                <TextBlock RelativePanel.AlignRightWithPanel="True"
                                RelativePanel.AlignBottomWithPanel="True"
                                Margin="0,0,15,10"
                                FontSize="13"
@@ -148,45 +146,44 @@
                                Name="txtbStoryImageSource"
                                Text="{Binding ImageSource}">
 
-                    </TextBlock>
-                </RelativePanel>
-                <StackPanel Grid.Row="1"
+                </TextBlock>
+            </RelativePanel>
+            <StackPanel Grid.Row="1"
                         Margin="12,5,12,8"
                         Orientation="Horizontal">
-                    <TextBlock Text="推荐者"
+                <TextBlock Text="推荐者"
                                 FontSize="14"
                                 VerticalAlignment="Center"
                                 Foreground="Gray">
 
-                    </TextBlock>
-                    <GridView Margin="3,3,3,2"
+                </TextBlock>
+                <GridView Margin="3,3,3,2"
                               SelectionMode="None"
                               ItemsSource="{Binding RecommenderAvatars}"
                               Tapped="gridrecommenders_Tapped"
                               Name="gridrecommenders">
-                        <GridView.ItemContainerStyle>
-                            <Style TargetType="GridViewItem">
-                                <Setter Property="Margin" Value="3,0,3,0"></Setter>
-                                <Setter Property="MinWidth" Value="0"></Setter>
-                                <Setter Property="MinHeight" Value="0"></Setter>
-                            </Style>
-                        </GridView.ItemContainerStyle>
-                        <GridView.ItemTemplate>
-                            <DataTemplate>
-                                <Image Width="20" Height="20" Source="{Binding}">
+                    <GridView.ItemContainerStyle>
+                        <Style TargetType="GridViewItem">
+                            <Setter Property="Margin" Value="3,0,3,0"></Setter>
+                            <Setter Property="MinWidth" Value="0"></Setter>
+                            <Setter Property="MinHeight" Value="0"></Setter>
+                        </Style>
+                    </GridView.ItemContainerStyle>
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Width="20" Height="20" Source="{Binding}">
 
-                                </Image>
-                            </DataTemplate>
-                        </GridView.ItemTemplate>
-                    </GridView>
-                </StackPanel>
-                <WebView Name="webStoryContent"
+                            </Image>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </StackPanel>
+            <WebView Name="webStoryContent"
                          Grid.Row="2"
                          local:ExtensionHTMLStringProperties.HtmlString="{Binding BodyHtml}"
                          >
-                </WebView>
-            </Grid>
-        </ScrollViewer>
+            </WebView>
+        </Grid>
         <ProgressRing Grid.Row="1"
                       Width="60"
                       Height="60"

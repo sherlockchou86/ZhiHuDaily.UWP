@@ -179,7 +179,7 @@ namespace ZhiHuDaily.UWP.Core.Https
                                 jo = j.GetObject();
                                 tmp = new Story { Date = json["date"].GetString(), Favorite = false, ID = jo["id"].GetNumber().ToString(), Image = jo["image"].GetString(), Title = jo["title"].GetString() };
 
-                                if (!await FileHelper.Current.CacheExist(tmp.ID + "_story_image." + image_ext)) //没有缓存
+                                if (!await FileHelper.Current.CacheExist(tmp.ID + "_story_top_image." + image_ext)) //没有缓存
                                 {
                                     wb = await GetImage(tmp.Image);  //下载图片
                                     if (!tmp.Image.Equals(""))
@@ -187,11 +187,11 @@ namespace ZhiHuDaily.UWP.Core.Https
                                         sitem = tmp.Image.Split('.');
                                         image_ext = sitem[sitem.Count() - 1];
                                     }
-                                    await FileHelper.Current.SaveImageAsync(wb, tmp.ID + "_story_image." + image_ext); //保存图片
+                                    await FileHelper.Current.SaveImageAsync(wb, tmp.ID + "_story_top_image." + image_ext); //保存图片
                                 }
                                 if (!tmp.Image.Equals(""))
                                 {
-                                    tmp.Image = _local_path + "\\images_cache\\" + tmp.ID + "_story_image." + image_ext;  //图片路径重定向
+                                    tmp.Image = _local_path + "\\images_cache\\" + tmp.ID + "_story_top_image." + image_ext;  //图片路径重定向
                                 }
 
                                 top_stories_list.Add(tmp);

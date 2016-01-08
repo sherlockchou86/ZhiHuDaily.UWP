@@ -12,7 +12,7 @@ namespace ZhiHuDaily.UWP.Core.Models
     /// 文章内容
     /// </summary>
     [DataContract]
-    class StoryContent
+    public class StoryContent
     {
         [DataMember]
         public string Body

@@ -12,7 +12,7 @@ namespace ZhiHuDaily.UWP.Core.Models
     /// 首页最近文章
     /// </summary>
     [DataContract]
-    class LatestStories
+    public class LatestStories
     {
         [DataMember]
         public string Date

@@ -242,6 +242,14 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NotificationsExtensions/1.0.0": {
+        "compile": {
+          "lib/portable-wpa81+win81/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/portable-wpa81+win81/NotificationsExtensions.winmd": {}
+        }
+      },
       "PullToRefresh.UWP/0.3.3": {
         "compile": {
           "ref/uap10.0/PullToRefresh.UWP.winmd": {}
@@ -1875,6 +1883,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NotificationsExtensions/1.0.0": {
+        "compile": {
+          "lib/portable-wpa81+win81/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/portable-wpa81+win81/NotificationsExtensions.winmd": {}
         }
       },
       "PullToRefresh.UWP/0.3.3": {
@@ -3543,6 +3559,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NotificationsExtensions/1.0.0": {
+        "compile": {
+          "lib/portable-wpa81+win81/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/portable-wpa81+win81/NotificationsExtensions.winmd": {}
         }
       },
       "PullToRefresh.UWP/0.3.3": {
@@ -5218,6 +5242,14 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NotificationsExtensions/1.0.0": {
+        "compile": {
+          "lib/portable-wpa81+win81/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/portable-wpa81+win81/NotificationsExtensions.winmd": {}
+        }
+      },
       "PullToRefresh.UWP/0.3.3": {
         "compile": {
           "ref/uap10.0/PullToRefresh.UWP.winmd": {}
@@ -6884,6 +6916,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NotificationsExtensions/1.0.0": {
+        "compile": {
+          "lib/portable-wpa81+win81/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/portable-wpa81+win81/NotificationsExtensions.winmd": {}
         }
       },
       "PullToRefresh.UWP/0.3.3": {
@@ -8559,6 +8599,14 @@
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NotificationsExtensions/1.0.0": {
+        "compile": {
+          "lib/portable-wpa81+win81/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/portable-wpa81+win81/NotificationsExtensions.winmd": {}
+        }
+      },
       "PullToRefresh.UWP/0.3.3": {
         "compile": {
           "ref/uap10.0/PullToRefresh.UWP.winmd": {}
@@ -10225,6 +10273,14 @@
         },
         "runtime": {
           "lib/dotnet/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NotificationsExtensions/1.0.0": {
+        "compile": {
+          "lib/portable-wpa81+win81/NotificationsExtensions.winmd": {}
+        },
+        "runtime": {
+          "lib/portable-wpa81+win81/NotificationsExtensions.winmd": {}
         }
       },
       "PullToRefresh.UWP/0.3.3": {
@@ -12376,6 +12432,17 @@
         "ref/net46/Microsoft.Win32.Primitives.dll",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._"
+      ]
+    },
+    "NotificationsExtensions/1.0.0": {
+      "sha512": "Xae9eltquOiBk+XxgsPLB3heTs8zOLpjy2Af/7u8WBM3WwDgNt5zXGh0dzgdczAzmF/GeZiyQr//SfOoQBIRbQ==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/portable-wpa81+win81/NotificationsExtensions.winmd",
+        "NotificationsExtensions.nuspec",
+        "package/services/metadata/core-properties/f0fb5871d757491abc2d64580f6b9cfe.psmdcp"
       ]
     },
     "PullToRefresh.UWP/0.3.3": {

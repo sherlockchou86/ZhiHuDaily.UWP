@@ -11,7 +11,7 @@ namespace ZhiHuDaily.UWP.Core.Models
     /// 启动图片
     /// </summary>
     [DataContract]
-    class StartImage
+    public class StartImage
     {
         [DataMember]
         public string ImageURL

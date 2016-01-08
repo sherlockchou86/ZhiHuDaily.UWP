@@ -14853,10 +14853,8 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Google.ProtocolBuffersLite >= 2.4.1.555",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
-      "NotificationsExtensions >= 1.0.0",
-      "WeChatSDK >= 2.0.1"
+      "NotificationsExtensions >= 1.0.0"
     ],
     "UAP,Version=v10.0": []
   }

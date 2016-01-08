@@ -103,6 +103,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BackgroundProxy.cs" />
     <Compile Include="CollectionPage.xaml.cs">
       <DependentUpon>CollectionPage.xaml</DependentUpon>
     </Compile>
@@ -228,6 +229,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ZhiHuDaily.UWP.Background\ZhiHuDaily.UWP.Background.csproj">
+      <Project>{bc4c3ceb-6263-44d7-9986-b6ae29377af5}</Project>
+      <Name>ZhiHuDaily.UWP.Background</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ZhiHuDaily.UWP.Core\ZhiHuDaily.UWP.Core.csproj">
       <Project>{76e992d7-4cc6-4f8b-ba91-86a7a4e4f122}</Project>
       <Name>ZhiHuDaily.UWP.Core</Name>

@@ -8,6 +8,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Imaging;
 using ZhiHuDaily.UWP.Core.Https;
 using ZhiHuDaily.UWP.Core.Models;
+using Windows.ApplicationModel.Background;
 
 namespace ZhiHuDaily.UWP.Core.ViewModels
 {
@@ -127,6 +128,7 @@ namespace ZhiHuDaily.UWP.Core.ViewModels
             AutoUpdateQuotation();
 
             DataShareManager.Current.ShareDataChanged += Current_ShareDataChanged;
+
         }
 
         /// <summary>
@@ -137,7 +139,7 @@ namespace ZhiHuDaily.UWP.Core.ViewModels
             APPTheme = DataShareManager.Current.APPTheme;
         }
         /// <summary>
-        /// 自动更新
+        /// 自动更新quotation
         /// </summary>
         private async void AutoUpdateQuotation()
         {
@@ -225,6 +227,5 @@ namespace ZhiHuDaily.UWP.Core.ViewModels
 
             IsLoading = false;
         }
-
     }
 }

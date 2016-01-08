@@ -12,7 +12,7 @@ namespace ZhiHuDaily.UWP.Core.Models
     /// 主题文章
     /// </summary>
     [DataContract]
-    class LatestThemeStories
+    public class LatestThemeStories
     {
         [DataMember]
         public string Background

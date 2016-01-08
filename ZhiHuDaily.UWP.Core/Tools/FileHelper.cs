@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace ZhiHuDaily.UWP.Core.Tools
 {
-    class FileHelper
+    public class FileHelper
     {
         private static FileHelper _current;
         public static FileHelper Current

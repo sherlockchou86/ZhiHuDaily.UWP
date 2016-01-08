@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ZhiHuDaily.UWP.Core.Models
 {
     [DataContract]
-    class ZhihuDailyQuotation
+    public class ZhihuDailyQuotation
     {
         [DataMember]
         public string Title

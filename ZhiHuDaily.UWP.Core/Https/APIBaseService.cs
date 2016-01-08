@@ -14,7 +14,7 @@ namespace ZhiHuDaily.UWP.Core.Https
     /// <summary>
     /// api服务基类
     /// </summary>
-    class APIBaseService
+    public class APIBaseService
     {
         protected async Task<JsonObject> GetJson(string url)
         {

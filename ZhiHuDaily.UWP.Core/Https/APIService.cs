@@ -15,7 +15,7 @@ namespace ZhiHuDaily.UWP.Core.Https
     /// <summary>
     /// api服务类  将接收到json字符串格式化成实体类
     /// </summary>
-    class APIService : APIBaseService
+    public class APIService : APIBaseService
     {
         private string _local_path = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
         /// <summary>

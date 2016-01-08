@@ -111,5 +111,15 @@
                       IsActive="{Binding IsLoading}">
 
         </ProgressRing>
+        <Popup HorizontalOffset="130" VerticalOffset="280" IsOpen="False" IsLightDismissEnabled="False" Name="popTips">
+            <Border BorderThickness="1" CornerRadius="2" Padding="7">
+                <Border.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.8"/>
+                </Border.Background>
+                <TextBlock Foreground="White">
+                    再按一次退出
+                </TextBlock>
+            </Border>
+        </Popup>
     </Grid>
 </Page>

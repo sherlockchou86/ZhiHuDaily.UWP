@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
@@ -29,7 +30,6 @@ namespace ZhiHuDaily.UWP.Mobile
     public sealed partial class MainPage : Page
     {
         MainViewModel _viewModel;
-
         public MainPage()
         {
             this.InitializeComponent();
@@ -43,7 +43,7 @@ namespace ZhiHuDaily.UWP.Mobile
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MainPage_BackRequested(object sender, BackRequestedEventArgs e)
+        private async void MainPage_BackRequested(object sender, BackRequestedEventArgs e)
         {
             if (!sptViewNavigation.IsSwipeablePaneOpen)
             {
@@ -53,7 +53,17 @@ namespace ZhiHuDaily.UWP.Mobile
                 }
                 else
                 {
-
+                    if (popTips.IsOpen)  //第二次按back键
+                    {
+                        Application.Current.Exit();
+                    }
+                    else
+                    {
+                        popTips.IsOpen = true;  //提示再按一次
+                        e.Handled = true;
+                        await Task.Delay(1000);  //1000ms后关闭提示
+                        popTips.IsOpen = false;
+                    }
                 }
             }
             else
@@ -141,7 +151,7 @@ namespace ZhiHuDaily.UWP.Mobile
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void appbtnBack_Click(object sender, RoutedEventArgs e)
+        private async void appbtnBack_Click(object sender, RoutedEventArgs e)
         {
             if (!sptViewNavigation.IsSwipeablePaneOpen)
             {
@@ -151,7 +161,16 @@ namespace ZhiHuDaily.UWP.Mobile
                 }
                 else
                 {
-
+                    if (popTips.IsOpen)  //第二次按back键
+                    {
+                        Application.Current.Exit();
+                    }
+                    else
+                    {
+                        popTips.IsOpen = true;  //提示再按一次
+                        await Task.Delay(1000);  //1000ms后关闭提示
+                        popTips.IsOpen = false;
+                    }
                 }
             }
             sptViewNavigation.IsSwipeablePaneOpen = false;

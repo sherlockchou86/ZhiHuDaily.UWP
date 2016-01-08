@@ -13,7 +13,7 @@ using ZhiHuDaily.UWP.Core.Tools;
 namespace ZhiHuDaily.UWP.Background
 {
     /// <summary>
-    /// 后台任务 负责将TopStory的Title更新到屏幕tile中
+    /// 后台任务 负责将当天的Story的Title更新到屏幕tile中
     /// </summary>
     public sealed class UpdateTileBackgroundExecution : IBackgroundTask
     {

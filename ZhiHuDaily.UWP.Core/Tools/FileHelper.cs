@@ -48,9 +48,11 @@ namespace ZhiHuDaily.UWP.Core.Tools
             try
             {
                 var folder = await _local_folder.CreateFolderAsync("data_cache", CreationCollisionOption.OpenIfExists);
-                var data = await folder.OpenStreamForWriteAsync(filename, CreationCollisionOption.ReplaceExisting);
-                DataContractJsonSerializer serizlizer = new DataContractJsonSerializer(typeof(T));
-                serizlizer.WriteObject(data, obj);
+                using (var data = await folder.OpenStreamForWriteAsync(filename, CreationCollisionOption.ReplaceExisting))
+                {
+                    DataContractJsonSerializer serizlizer = new DataContractJsonSerializer(typeof(T));
+                    serizlizer.WriteObject(data, obj);
+                }
             }
             catch
             {
@@ -62,10 +64,12 @@ namespace ZhiHuDaily.UWP.Core.Tools
             try
             {
                 var folder = await _local_folder.CreateFolderAsync("data_cache", CreationCollisionOption.OpenIfExists);
-                var data = await folder.OpenStreamForReadAsync(filename);
-                DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T));
+                using (var data = await folder.OpenStreamForReadAsync(filename))
+                {
+                    DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T));
 
-                return serializer.ReadObject(data) as T;
+                    return serializer.ReadObject(data) as T;
+                }
             }
             catch
             {

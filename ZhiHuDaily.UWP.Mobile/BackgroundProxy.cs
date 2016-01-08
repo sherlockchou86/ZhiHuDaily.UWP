@@ -15,13 +15,14 @@ namespace ZhiHuDaily.UWP.Mobile
     {
         public async void Register()
         {
+            BackgroundExecutionManager.RemoveAccess();
             var access = await BackgroundExecutionManager.RequestAccessAsync();
             if (access == BackgroundAccessStatus.Denied || access == BackgroundAccessStatus.Unspecified)
             {
                 await new MessageDialog("系统关闭了后台运行，请前往‘系统设置’进行设置").ShowAsync();
                 return;
             }
-            RegisterPullLatestStoriesBackgroundTask();
+            //RegisterPullLatestStoriesBackgroundTask();  废弃
             RegisterUpdateTileBackgroundTask();
         }
         /// <summary>

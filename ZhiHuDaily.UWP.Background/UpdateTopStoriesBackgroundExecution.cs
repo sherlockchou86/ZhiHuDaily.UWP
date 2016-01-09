@@ -15,12 +15,12 @@ namespace ZhiHuDaily.UWP.Background
     /// <summary>
     /// 后台任务 负责将当天的Story的Title更新到屏幕tile中
     /// </summary>
-    public sealed class UpdateTileBackgroundExecution : IBackgroundTask
+    public sealed class UpdateTopStoriesBackgroundExecution : IBackgroundTask
     {
         public async void Run(IBackgroundTaskInstance taskInstance)
         {
             var d = taskInstance.GetDeferral();
-            await BackgroundTaskAction.UpdateTile();
+            await BackgroundTaskAction.UpdateTopStories();
             d.Complete();
         }
     }

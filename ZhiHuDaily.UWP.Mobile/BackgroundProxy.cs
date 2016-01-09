@@ -13,6 +13,9 @@ namespace ZhiHuDaily.UWP.Mobile
 {
     class BackgroundProxy
     {
+        /// <summary>
+        /// 注册后台任务
+        /// </summary>
         public async void Register()
         {
             BackgroundExecutionManager.RemoveAccess();
@@ -22,15 +25,14 @@ namespace ZhiHuDaily.UWP.Mobile
                 await new MessageDialog("系统关闭了后台运行，请前往‘系统设置’进行设置").ShowAsync();
                 return;
             }
-            //RegisterPullLatestStoriesBackgroundTask();  废弃
-            RegisterUpdateTileBackgroundTask();
+            RegisterUpdateTopStoriesBackgroundTask();
         }
         /// <summary>
-        /// 注册tile更新后台任务
+        /// 屏幕点亮时执行该任务
         /// </summary>
-        private void RegisterUpdateTileBackgroundTask()
+        private void RegisterUpdateTopStoriesBackgroundTask()
         {
-            string Task_NAME = "Update Tile Task";
+            string Task_NAME = "Update Task";
             var taskReg = BackgroundTaskRegistration.AllTasks.Values.FirstOrDefault(t => t.Name == Task_NAME) as BackgroundTaskRegistration;
             if (taskReg != null)
             {
@@ -40,7 +42,7 @@ namespace ZhiHuDaily.UWP.Mobile
             var task = new BackgroundTaskBuilder
             {
                 Name = Task_NAME,
-                TaskEntryPoint = typeof(ZhiHuDaily.UWP.Background.UpdateTileBackgroundExecution).FullName
+                TaskEntryPoint = typeof(ZhiHuDaily.UWP.Background.UpdateTopStoriesBackgroundExecution).FullName
             };
 
             var trigger = new SystemTrigger(SystemTriggerType.UserPresent, false);
@@ -48,29 +50,5 @@ namespace ZhiHuDaily.UWP.Mobile
             task.SetTrigger(trigger);
             var r = task.Register();
         }
-        /// <summary>
-        /// 注册拉取最新story后台任务
-        /// </summary>
-        private void RegisterPullLatestStoriesBackgroundTask()
-        {
-            string Task_NAME = "Pull Latest Stories Task";
-            var taskReg = BackgroundTaskRegistration.AllTasks.Values.FirstOrDefault(t => t.Name == Task_NAME) as BackgroundTaskRegistration;
-            if (taskReg != null)
-            {
-                return;
-            }
-
-            var task = new BackgroundTaskBuilder
-            {
-                Name = Task_NAME,
-                TaskEntryPoint = typeof(ZhiHuDaily.UWP.Background.PullLatestStoriesBackgroundExecution).FullName
-            };
-
-            var trigger = new SystemTrigger(SystemTriggerType.UserAway, false);
-
-            task.SetTrigger(trigger);
-            var r = task.Register();
-        }
-
     }
 }

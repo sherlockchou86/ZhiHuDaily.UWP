@@ -108,8 +108,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PullLatestStoriesBackgroundExecution.cs" />
-    <Compile Include="UpdateTileBackgroundExecution.cs" />
+    <Compile Include="UpdateTopStoriesBackgroundExecution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

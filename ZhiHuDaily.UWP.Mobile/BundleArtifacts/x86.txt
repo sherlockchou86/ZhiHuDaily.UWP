@@ -1,1 +1,1 @@
-MainPackage=E:\周智2015\githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\bin\x86\Debug\ZhiHuDaily.UWP.Mobile_1.1.16.0_x86_Debug.appx
+MainPackage=E:\周智2015\githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\bin\x86\Debug\ZhiHuDaily.UWP.Mobile_1.1.17.0_x86_Debug.appx

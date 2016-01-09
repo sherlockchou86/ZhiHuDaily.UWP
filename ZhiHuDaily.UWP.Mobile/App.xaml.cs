@@ -85,20 +85,29 @@ namespace ZhiHuDaily.UWP.Mobile
         {
             
         }
-
         /// <summary>
-        /// APP被唤醒
+        /// 文件唤醒
+        /// </summary>
+        /// <param name="args"></param>
+        protected override void OnFileActivated(FileActivatedEventArgs args)
+        {
+            base.OnFileActivated(args);
+            InitContent(args);
+            new WeChatResponseHandler().Handle(args as FileActivatedEventArgs);  //处理文件
+        }
+        /// <summary>
+        /// toast通知唤醒
         /// </summary>
         /// <param name="args"></param>
         protected override void OnActivated(IActivatedEventArgs args)
         {
             base.OnActivated(args);
+            InitContent(args);
             if (args.Kind == ActivationKind.ToastNotification)  //处理通知
-                InitContent(args);
-            else if(args.Kind == ActivationKind.File)
-                new WeChatResponseHandler().Handle(args as FileActivatedEventArgs);  //处理文件
+            {
+                //... 没做跳转
+            }
         }
-
         /// <summary>
         /// 初始化内容
         /// </summary>

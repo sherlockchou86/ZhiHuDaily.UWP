@@ -1,2 +1,2 @@
-MainPackage=E:\周智2015\githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\bin\ARM\Debug\ZhiHuDaily.UWP.Mobile_1.1.17.0_ARM_Debug.appx
-ResourcePack=E:\周智2015\githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\bin\ARM\Debug\ZhiHuDaily.UWP.Mobile_1.1.17.0_language-zh-hans.appx
+MainPackage=E:\周智2015\githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\bin\ARM\Debug\ZhiHuDaily.UWP.Mobile_1.1.18.0_ARM_Debug.appx
+ResourcePack=E:\周智2015\githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\bin\ARM\Debug\ZhiHuDaily.UWP.Mobile_1.1.18.0_language-zh-hans.appx

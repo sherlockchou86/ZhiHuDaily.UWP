@@ -23,7 +23,7 @@ namespace ZhiHuDaily.UWP.Core.Tools
         public async static Task UpdateTopStories()
         {
             APIService api = new APIService();
-            var t = await api.GetLatestStories();
+            var t = await api.GetLatestStories(true);
             if (t != null)
             {
                 UpdateTile(t);

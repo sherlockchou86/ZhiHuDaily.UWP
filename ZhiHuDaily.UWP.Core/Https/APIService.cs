@@ -118,7 +118,7 @@ namespace ZhiHuDaily.UWP.Core.Https
         /// 主页最近文章
         /// </summary>
         /// <returns></returns>
-        public async Task<LatestStories> GetLatestStories()
+        public async Task<LatestStories> GetLatestStories(bool execute_at_runtime = false)
         {
             try
             {
@@ -181,13 +181,24 @@ namespace ZhiHuDaily.UWP.Core.Https
 
                                 if (!await FileHelper.Current.CacheExist(tmp.ID + "_story_top_image." + image_ext)) //没有缓存
                                 {
-                                    wb = await GetImage(tmp.Image);  //下载图片
+
                                     if (!tmp.Image.Equals(""))
                                     {
                                         sitem = tmp.Image.Split('.');
                                         image_ext = sitem[sitem.Count() - 1];
                                     }
-                                    await FileHelper.Current.SaveImageAsync(wb, tmp.ID + "_story_top_image." + image_ext); //保存图片
+
+                                    if (!execute_at_runtime)
+                                    {
+                                        wb = await GetImage(tmp.Image);  //正常下载图片
+                                        await FileHelper.Current.SaveImageAsync(wb, tmp.ID + "_story_top_image." + image_ext); //保存图片
+                                    }
+                                    else
+                                    {
+                                        //runtime component 重下载图片
+                                        await GetImageInRuntimeComponent(tmp.Image, tmp.ID + "_story_top_image." + image_ext);
+                                    }
+
                                 }
                                 if (!tmp.Image.Equals(""))
                                 {

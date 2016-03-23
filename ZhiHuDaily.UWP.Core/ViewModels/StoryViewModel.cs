@@ -242,11 +242,11 @@ namespace ZhiHuDaily.UWP.Core.ViewModels
                 if (DataShareManager.Current.BigFont)  //大字号
                 {
                     
-                    css3 = "<style>body{font-size:52px;} h1{font-size:62px;} h2{font-size:58px;} h3{font-size:52px;} h4,h5,h6{font-size:48px;}</style>";
+                    css3 = "<style>body{font-size:52px;} h1{font-size:62px;} h2{font-size:58px;} h3{font-size:52px;} h4,h5,h6{font-size:48px;} blockquote{font-size:48px!;}</style>";
                 }
                 else
                 {
-                    css3 = "<style>body{font-size:44px;} h1{font-size:55px;} h2{font-size:50px;} h3{font-size:45px;} h4,h5,h6{font-size:40px;}</style>";
+                    css3 = "<style>body{font-size:44px;} h1{font-size:55px;} h2{font-size:50px;} h3{font-size:45px;} h4,h5,h6{font-size:40px;} blockquote{font-size:40px!;}</style>";
                 }
                 
                 if (DataShareManager.Current.NOImagesMode)  //无图模式
@@ -293,7 +293,7 @@ namespace ZhiHuDaily.UWP.Core.ViewModels
                 // <link rel='stylesheet' type='text/css' href='" + sc.CSS + "'/> 官方css文件不好控制  所以没有使用 
 
                 //合并
-                BodyHtml = "<html><head>" + ex_mark + css + css2 + css3 + js + "</head>" + "<body>" +  body + "</body></html>";  //附加css
+                BodyHtml = "<html><head>" + ex_mark + css + css2 + css3 + js + "</head>" + "<body>" +  body.Replace("<blockquote>","<p>").Replace("</blockquote>","</p>") + "</body></html>";  //附加css
             }
             if (se != null)
             {

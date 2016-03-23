@@ -165,6 +165,13 @@
                     <Setter Property="Padding" Value="0"></Setter>
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
                     <Setter Property="MinHeight" Value="0"></Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <ListViewItemPresenter />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>

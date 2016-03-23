@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -17,6 +18,12 @@ namespace ZhiHuDaily.UWP.Core.Https
     /// </summary>
     public class APIBaseService
     {
+        private void Printlog(string info)
+        {
+#if DEBUG
+            Debug.WriteLine(DateTime.Now.ToString() + " " + info);
+#endif
+        }
         protected async Task<JsonObject> GetJson(string url)
         {
             try
@@ -24,15 +31,18 @@ namespace ZhiHuDaily.UWP.Core.Https
                 string json = await BaseService.SendGetRequest(url);
                 if (json != null)
                 {
+                    Printlog("请求Json数据成功 URL：" + url);
                     return JsonObject.Parse(json);
                 }
                 else
                 {
+                    Printlog("请求Json数据失败 URL：" + url);
                     return null;
                 }
             }
             catch
             {
+                Printlog("请求Json数据失败 URL：" + url);
                 return null;
             }
         }
@@ -43,10 +53,12 @@ namespace ZhiHuDaily.UWP.Core.Https
                 string html = await BaseService.SendGetRequest(url);
                 //byte[] bytes = Encoding.UTF8.GetBytes(html);
                 //html = Encoding.GetEncoding("GBK").GetString(bytes);
+                Printlog("请求Html数据成功 URL：" + url);
                 return html;                     
             }
             catch
             {
+                Printlog("请求Html数据失败 URL：" + url);
                 return null;
             }
         }

@@ -60,6 +60,8 @@ namespace ZhiHuDaily.UWP.Mobile
                     else
                     {
                         popTips.IsOpen = true;  //提示再按一次
+                        popTips.HorizontalOffset = this.ActualWidth / 2 - 45;  //居中
+                        popTips.VerticalOffset = this.ActualHeight / 2 - 5;
                         e.Handled = true;
                         await Task.Delay(1000);  //1000ms后关闭提示
                         popTips.IsOpen = false;
@@ -168,6 +170,8 @@ namespace ZhiHuDaily.UWP.Mobile
                     else
                     {
                         popTips.IsOpen = true;  //提示再按一次
+                        popTips.HorizontalOffset = this.ActualWidth / 2 - 45;  //居中
+                        popTips.VerticalOffset = this.ActualHeight / 2 - 5;
                         await Task.Delay(1000);  //1000ms后关闭提示
                         popTips.IsOpen = false;
                     }

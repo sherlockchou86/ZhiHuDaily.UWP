@@ -52,6 +52,13 @@
                     <Setter Property="Margin" Value="8,4,8,4"></Setter>
                     <Setter Property="Padding" Value="0"></Setter>
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <ListViewItemPresenter />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.Header>
@@ -140,6 +147,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="0"
+                            CornerRadius="4"
+                            BorderBrush="LightGray"
                             Padding="0"
                             HorizontalAlignment="Stretch"                      
                             >

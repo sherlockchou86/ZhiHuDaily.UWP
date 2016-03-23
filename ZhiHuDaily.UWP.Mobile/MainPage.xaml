@@ -77,11 +77,18 @@
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <ListViewItemPresenter />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
                         </Style>
                     </ListView.ItemContainerStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <RelativePanel Margin="0,8,0,8">
+                            <RelativePanel Margin="0,8,0,8" Padding="15,0,0,0">
                                 <TextBlock Text="{Binding Name}"
                                             FontSize="16"
                                             RelativePanel.AlignLeftWithPanel="True"
@@ -112,7 +119,7 @@
 
         </ProgressRing>
         <Popup HorizontalOffset="130" VerticalOffset="280" IsOpen="False" IsLightDismissEnabled="False" Name="popTips">
-            <Border BorderThickness="1" CornerRadius="2" Padding="7">
+            <Border BorderThickness="1" CornerRadius="2" Padding="7" Name="borTip">
                 <Border.Background>
                     <SolidColorBrush Color="Black" Opacity="0.8"/>
                 </Border.Background>

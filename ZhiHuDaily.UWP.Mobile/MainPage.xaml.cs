@@ -104,6 +104,20 @@ namespace ZhiHuDaily.UWP.Mobile
                 {
                     this.frmPages.Navigate(typeof(ThemePage), new object[] { theme });
                 }
+                ListViewItem item_ui = null;
+                foreach(var item in listTheme.Items)
+                {
+                    item_ui = ((ListViewItem)(listTheme.ContainerFromItem(item)));
+                    if (item_ui != null)
+                    {
+                        item_ui.Background = listTheme.Background;
+                    }
+                }
+                item_ui = ((ListViewItem)(listTheme.ContainerFromItem(theme)));
+                if (item_ui != null)
+                {
+                    item_ui.Background = Application.Current.Resources["SystemControlHighlightAltListAccentLowBrush"] as SolidColorBrush;
+                }
                 sptViewNavigation.IsSwipeablePaneOpen = false;
             }
         }

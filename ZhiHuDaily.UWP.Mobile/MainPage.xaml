@@ -77,18 +77,18 @@
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
-                            <Setter Property="Template">
+                            <!--<Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="ListViewItem">
                                         <ListViewItemPresenter />
                                     </ControlTemplate>
                                 </Setter.Value>
-                            </Setter>
+                            </Setter>-->
                         </Style>
                     </ListView.ItemContainerStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <RelativePanel Margin="0,8,0,8" Padding="15,0,0,0">
+                            <RelativePanel Margin="0,8,0,8" Padding="10,0,0,0">
                                 <TextBlock Text="{Binding Name}"
                                             FontSize="16"
                                             RelativePanel.AlignLeftWithPanel="True"

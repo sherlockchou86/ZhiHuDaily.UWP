@@ -56,6 +56,14 @@ namespace ZhiHuDaily.UWP.Core.ViewModels
             }
         }
 
+        private bool _show_toast;
+        public bool ShowToast
+        {
+            get
+            {
+                return _show_toast;
+            }
+        }
         private static DataShareManager _current;
         public static DataShareManager Current
         {
@@ -95,7 +103,14 @@ namespace ZhiHuDaily.UWP.Core.ViewModels
             {
                 _big_font = false;
             }
-
+            if (roamingSettings.Values.ContainsKey("SHOW_TOAST"))
+            {
+                _show_toast = bool.Parse(roamingSettings.Values["SHOW_TOAST"].ToString());
+            }
+            else
+            {
+                _show_toast = true;
+            }
             if (roamingSettings.Values.ContainsKey("NO_IMAGES_MODE"))
             {
                 _no_imgaes_mode = bool.Parse(roamingSettings.Values["NO_IMAGES_MODE"].ToString());
@@ -142,6 +157,13 @@ namespace ZhiHuDaily.UWP.Core.ViewModels
             _big_font = big_font;
             var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
             roamingSettings.Values["BIG_FONT"] = _big_font;
+            OnShareDataChanged();
+        }
+        public void UpdateShowToast(bool show_toast)
+        {
+            _show_toast = show_toast;
+            var roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+            roamingSettings.Values["SHOW_TOAST"] = _show_toast;
             OnShareDataChanged();
         }
         public void UpdateNoImagesMode(bool no_images)

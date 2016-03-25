@@ -85,5 +85,14 @@ namespace ZhiHuDaily.UWP.Mobile
         {
             _viewModel.ClearCache();
         }
+        /// <summary>
+        /// 头条通知
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsShowToast_Toggled(object sender, RoutedEventArgs e)
+        {
+            _viewModel.ExchangeShowToast((sender as ToggleSwitch).IsOn);
+        }
     }
 }

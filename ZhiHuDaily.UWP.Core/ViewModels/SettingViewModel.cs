@@ -75,7 +75,19 @@ namespace ZhiHuDaily.UWP.Core.ViewModels
                 OnPropertyChanged();
             }
         }
-
+        private bool _show_toast;
+        public bool ShowToast
+        {
+            get
+            {
+                return _show_toast;
+            }
+            set
+            {
+                _show_toast = value;
+                OnPropertyChanged();
+            }
+        }
         public SettingViewModel()
         {
             Update();
@@ -87,6 +99,7 @@ namespace ZhiHuDaily.UWP.Core.ViewModels
             DarkMode = DataShareManager.Current.APPTheme == Windows.UI.Xaml.ElementTheme.Dark ? true : false;
             BigFont = DataShareManager.Current.BigFont;
             NoImagesMode = DataShareManager.Current.NOImagesMode;
+            ShowToast = DataShareManager.Current.ShowToast;
 
             double size_cache = await FileHelper.Current.GetCacheSize();
             ClearCacheTitle = "清除缓存[" + GetFormatSize(size_cache) + "]";
@@ -123,6 +136,10 @@ namespace ZhiHuDaily.UWP.Core.ViewModels
             DataShareManager.Current.UpdateNoImagesMode(no_images);
         }
 
+        public void ExchangeShowToast(bool show_toast)
+        {
+            DataShareManager.Current.UpdateShowToast(show_toast);
+        }
         private string GetFormatSize(double size)
         {
             if (size < 1024)

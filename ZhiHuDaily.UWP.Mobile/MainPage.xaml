@@ -18,7 +18,7 @@
 
                 </StackPanel>
             </CommandBar.Content>
-            <AppBarButton Name="appbtnBack" Icon="Back" Label="后退" Click="appbtnBack_Click"/>
+            <AppBarButton Name="appbtnBack" Icon="Back" Label="后退" Visibility="Collapsed" Click="appbtnBack_Click"/>
             <AppBarButton Name="appbtnRefresh" Icon="Refresh" Label="刷新" Click="appbtnRefresh_Click"/>
             <AppBarButton Name="appbtnNavigation" Icon="List" Label="导航" Click="appbtnNavigation_Click"/>
             <AppBarButton Name="appbtnCollection" Label="收藏" Icon="SolidStar" Click="appbtnCollection_Click"/>

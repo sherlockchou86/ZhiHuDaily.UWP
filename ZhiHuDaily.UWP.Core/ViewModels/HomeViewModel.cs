@@ -176,7 +176,8 @@ namespace ZhiHuDaily.UWP.Core.ViewModels
         private void Current_ShareDataChanged()
         {
             APPTheme = DataShareManager.Current.APPTheme;
-            Stories.ToList().ForEach((s) => s.Readed = s.Readed);
+            if (Stories != null)
+                Stories.ToList().ForEach((s) => s.Readed = s.Readed);
         }
 
     }

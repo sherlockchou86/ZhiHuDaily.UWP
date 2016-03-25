@@ -111,6 +111,8 @@ namespace ZhiHuDaily.UWP.Core.Tools
         /// <param name="t"></param>
         private static void ShowToast(LatestStories t)
         {
+            if (!DataShareManager.Current.ShowToast)
+                return;
             //将还未阅读的头条文章使用toast方式通知给用户
             var toast_updater = ToastNotificationManager.CreateToastNotifier();
             string xml = "<toast lang=\"zh-CN\" launch='111' >" +

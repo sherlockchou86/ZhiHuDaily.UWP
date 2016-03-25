@@ -122,7 +122,8 @@ namespace ZhiHuDaily.UWP.Core.ViewModels
 
         private void Current_ShareDataChanged()
         {
-            Stories.ToList().ForEach((s) => s.Readed = s.Readed);
+            if (Stories != null)
+                Stories.ToList().ForEach((s) => s.Readed = s.Readed);
         }
 
         /// <summary>

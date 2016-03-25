@@ -34,6 +34,7 @@
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Padding="10">
                 <TextBlock Text="常规" FontWeight="Bold">
@@ -105,6 +106,25 @@
                 </RelativePanel>
             </StackPanel>
             <StackPanel Grid.Row="4"
+                        Padding="10"
+                        >
+                <RelativePanel>
+                    <TextBlock Text="头条通知"
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.AlignVerticalCenterWithPanel="True">
+
+                    </TextBlock>
+                    <ToggleSwitch RelativePanel.AlignRightWithPanel="True"
+                                  Margin="0,0,20,0"
+                                  IsOn="{Binding ShowToast}"
+                                  Name="tsShowToast"
+                                  Toggled="tsShowToast_Toggled"
+                                  RelativePanel.AlignVerticalCenterWithPanel="True" MinWidth="0">
+
+                    </ToggleSwitch>
+                </RelativePanel>
+            </StackPanel>
+            <StackPanel Grid.Row="5"
                         Padding="10">
                 <TextBlock Text="其他" FontWeight="Bold">
                     
@@ -113,7 +133,7 @@
                     
                 </Rectangle>
             </StackPanel>
-            <StackPanel Grid.Row="5"
+            <StackPanel Grid.Row="6"
                         Padding="10">
                 <RelativePanel>
                     <TextBlock Text="{Binding ClearCacheTitle,TargetNullValue='清除缓存[计算中...]'}"
@@ -131,7 +151,7 @@
                     </Button>
                 </RelativePanel>
             </StackPanel>
-            <StackPanel Grid.Row="6"
+            <StackPanel Grid.Row="7"
                         Padding="10"
                        >
                 <RelativePanel>
@@ -165,7 +185,7 @@
                     </HyperlinkButton>
                 </RelativePanel>
             </StackPanel>
-            <StackPanel Grid.Row="7"
+            <StackPanel Grid.Row="8"
                         Padding="10"
                        >
                 <RelativePanel>

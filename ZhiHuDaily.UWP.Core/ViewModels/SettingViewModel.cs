@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel;
 using ZhiHuDaily.UWP.Core.Tools;
 
 namespace ZhiHuDaily.UWP.Core.ViewModels
@@ -86,6 +87,15 @@ namespace ZhiHuDaily.UWP.Core.ViewModels
             {
                 _show_toast = value;
                 OnPropertyChanged();
+            }
+        }
+
+        public string VersionString
+        {
+            get
+            {
+                var v = Package.Current.Id.Version;
+                return "当前版本: " + v.Major + "." + v.Minor + "." + v.Build + "." + v.Revision;
             }
         }
         public SettingViewModel()

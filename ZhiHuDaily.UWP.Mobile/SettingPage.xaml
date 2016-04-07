@@ -35,6 +35,7 @@
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Padding="10">
                 <TextBlock Text="常规" FontWeight="Bold">
@@ -202,6 +203,16 @@
                             Margin="0,0,10,0">
                         
                     </Button>
+                </RelativePanel>
+            </StackPanel>
+            <StackPanel Grid.Row="9"
+                        Padding="10"
+                       >
+                <RelativePanel>
+                    <TextBlock Text="{Binding VersionString}"
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.AlignVerticalCenterWithPanel="True">
+                    </TextBlock>
                 </RelativePanel>
             </StackPanel>
         </Grid>

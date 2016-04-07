@@ -132,8 +132,19 @@ namespace ZhiHuDaily.UWP.Mobile
             }
             TopStoryIndexAutoChange();
         }
-
+        /// <summary>
+        /// 手动刷新
+        /// </summary>
         public void RefreshPage()
+        {
+            _viewModel.Update();
+        }
+        /// <summary>
+        /// 下拉刷新
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listStories_PullDownRefresh(object sender, RoutedEventArgs e)
         {
             _viewModel.Update();
         }

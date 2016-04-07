@@ -1,1 +1,1 @@
-E:\周智2015\githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\AppPackages\ZhiHuDaily.UWP.Mobile_1.1.3.0\ZhiHuDaily.UWP.Mobile_1.1.3.0_x86_x64_arm.appxbundle
+E:\Codes\Githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\AppPackages\ZhiHuDaily.UWP.Mobile_1.2.8.0\ZhiHuDaily.UWP.Mobile_1.2.8.0_x86_x64_arm.appxbundle

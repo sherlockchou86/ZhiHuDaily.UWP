@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pr="using:PullToRefresh.UWP"
+    xmlns:controls="using:ZhiHuDaily.UWP.Core.Controls"
     mc:Ignorable="d"
     RequestedTheme="{Binding APPTheme}"
     Loaded="Page_Loaded">
@@ -40,14 +41,16 @@
             </TextBlock>
         </RelativePanel>
         <!--内容-->
-        <ListView Grid.Row="1"
+        <controls:ListViewControl Grid.Row="1"
                   Name="listStories"
                   SelectionMode="None"
                   IsItemClickEnabled="True"
+                  IsShowPullDownRefresh="True"
+                  PullDownRefresh="listStories_PullDownRefresh"
                   ItemClick="listStories_ItemClick"
                   ItemsSource="{Binding Stories}">
-                  <!--Background="#FFF0F0F0"-->
-            <ListView.ItemContainerStyle>
+            <!--Background="#FFF0F0F0"-->
+            <controls:ListViewControl.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="Margin" Value="8,4,8,4"></Setter>
                     <Setter Property="Padding" Value="0"></Setter>
@@ -60,8 +63,8 @@
                         </Setter.Value>
                     </Setter>
                 </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.Header>
+            </controls:ListViewControl.ItemContainerStyle>
+            <controls:ListViewControl.Header>
                 <RelativePanel Margin="0,0,0,5">
                     <FlipView Name="TopStories" 
                               Height="220" 
@@ -143,8 +146,8 @@
                                        Name="rect51">
                     </Ellipse>
                 </RelativePanel>
-            </ListView.Header>
-            <ListView.ItemTemplate>
+            </controls:ListViewControl.Header>
+            <controls:ListViewControl.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="0"
                             CornerRadius="4"
@@ -205,8 +208,8 @@
                         </Grid>
                     </Border>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </controls:ListViewControl.ItemTemplate>
+        </controls:ListViewControl>
         <ProgressRing Grid.Row="1"
                       Margin="0,10,0,0"
                       Height="60"

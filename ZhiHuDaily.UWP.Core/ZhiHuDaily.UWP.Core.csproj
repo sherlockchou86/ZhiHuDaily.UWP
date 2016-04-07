@@ -107,6 +107,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ListViewControl.cs" />
     <Compile Include="Controls\SwipeableSplitView.cs" />
     <Compile Include="Data\CollectionsStoriesIncrementalLoadingCollection.cs" />
     <Compile Include="Data\Delegates.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="Share\WeChatRequest.cs" />
     <Compile Include="Share\WeChatResponseHandler.cs" />
     <Compile Include="Tools\BackgroundTaskAction.cs" />
+    <Compile Include="Tools\Clip.cs" />
     <Compile Include="Tools\DispatcherManager.cs" />
     <Compile Include="Tools\FileHelper.cs" />
     <Compile Include="Tools\NetworkManager.cs" />

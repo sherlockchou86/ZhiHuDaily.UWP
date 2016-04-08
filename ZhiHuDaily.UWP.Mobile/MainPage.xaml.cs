@@ -217,14 +217,36 @@ namespace ZhiHuDaily.UWP.Mobile
         /// <param name="e"></param>
         private void frmPages_Navigated(object sender, NavigationEventArgs e)
         {
-            if (e.SourcePageType.Equals(typeof(HomePage)) || e.SourcePageType.Equals(typeof(ThemePage)))
-            {
-                appbtnRefresh.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                appbtnRefresh.Visibility = Visibility.Collapsed;
-            }
+            //if (e.SourcePageType.Equals(typeof(HomePage)) || e.SourcePageType.Equals(typeof(ThemePage)))
+            //{
+            //    appbtnRefresh.Visibility = Visibility.Visible;
+            //}
+            //else
+            //{
+            //    appbtnRefresh.Visibility = Visibility.Collapsed;
+            //}
+        }
+        /// <summary>
+        /// 打开收藏界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void favo_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (!this.frmPages.Content.GetType().Equals(typeof(CollectionPage)))
+                this.frmPages.Navigate(typeof(CollectionPage));
+            sptViewNavigation.IsSwipeablePaneOpen = false;
+        }
+        /// <summary>
+        /// 打开设置界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void setting_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (!this.frmPages.Content.GetType().Equals(typeof(SettingPage)))
+                this.frmPages.Navigate(typeof(SettingPage));
+            sptViewNavigation.IsSwipeablePaneOpen = false;
         }
     }
     /// <summary>

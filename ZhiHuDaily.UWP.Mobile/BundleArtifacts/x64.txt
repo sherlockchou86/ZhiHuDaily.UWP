@@ -1,2 +1,2 @@
-MainPackage=E:\Codes\Githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\bin\x64\Release\ZhiHuDaily.UWP.Mobile_1.2.8.0_x64.appx
-SymbolPackage=E:\Codes\Githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\AppPackages\ZhiHuDaily.UWP.Mobile_1.2.8.0_Test\ZhiHuDaily.UWP.Mobile_1.2.8.0_x64.appxsym
+MainPackage=E:\Codes\Githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\bin\x64\Release\ZhiHuDaily.UWP.Mobile_1.2.9.0_x64.appx
+SymbolPackage=E:\Codes\Githubs\ZhiHuDaily.UWP\ZhiHuDaily.UWP.Mobile\AppPackages\ZhiHuDaily.UWP.Mobile_1.2.9.0_Test\ZhiHuDaily.UWP.Mobile_1.2.9.0_x64.appxsym

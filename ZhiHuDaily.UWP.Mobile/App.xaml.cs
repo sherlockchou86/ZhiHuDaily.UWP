@@ -9,6 +9,8 @@ using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Background;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Foundation.Metadata;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -111,7 +113,7 @@ namespace ZhiHuDaily.UWP.Mobile
         /// <summary>
         /// 初始化内容
         /// </summary>
-        private void InitContent(object arg)
+        private async void InitContent(object arg)
         {
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -135,6 +137,20 @@ namespace ZhiHuDaily.UWP.Mobile
                 rootFrame.Navigate(typeof(SplashPage), arg);
             }
             // 确保当前窗口处于活动状态
+            if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            {
+
+                var statusBar = StatusBar.GetForCurrentView();
+                if (statusBar != null)
+                {
+                    //statusBar.BackgroundOpacity = 1;
+                    //Windows.UI.Color c = (Application.Current.Resources.ThemeDictionaries["SystemControlHighlightAltListAccentLowBrush"] as SolidColorBrush).Color;
+                    //statusBar.BackgroundColor = Windows.UI.Colors.Transparent;
+                    //statusBar.ForegroundColor = Windows.UI.Colors.White;
+
+                    await statusBar.HideAsync();
+                }
+            }
             Window.Current.Activate();
         }
     }

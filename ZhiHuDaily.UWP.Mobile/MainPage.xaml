@@ -11,7 +11,8 @@
     <Page.Resources>
         <local:LogoBackgroundFormat x:Key="logoBackgroundFormat"></local:LogoBackgroundFormat>
     </Page.Resources>
-    <Page.BottomAppBar>
+    <!--隐藏AppBar 新版本中的功能都分散到其他地方了-->
+    <!--<Page.BottomAppBar>
         <CommandBar>
             <CommandBar.Content>
                 <StackPanel Orientation="Horizontal">
@@ -24,7 +25,7 @@
             <AppBarButton Name="appbtnCollection" Label="收藏" Icon="SolidStar" Click="appbtnCollection_Click"/>
             <AppBarButton Name="appbtnSetting" Icon="Setting" Label="设置" Click="appbtnSetting_Click"/>
         </CommandBar>
-    </Page.BottomAppBar>
+    </Page.BottomAppBar>-->
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <custom_controls:SwipeableSplitView Name="sptViewNavigation" 
                                             IsPanSelectorEnabled="False"
@@ -41,38 +42,50 @@
                         SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
                         >
                     <ListView.Header>
-                        <RelativePanel Background="{ThemeResource SystemControlHighlightAltListAccentLowBrush}"
+                        <StackPanel>
+                            <RelativePanel Background="{ThemeResource SystemControlHighlightAltListAccentLowBrush}"
                                        >
-                            <Image Name="imgLogoBack"
+                                <Image Name="imgLogoBack"
                                    Stretch="UniformToFill"
                                    Height="120"
                                    Source="{Binding Path=LogoBack}">
-                            </Image>
-                            <StackPanel Orientation="Horizontal"
+                                </Image>
+                                <StackPanel Orientation="Horizontal"
                                         RelativePanel.AlignTopWithPanel="True"
                                         RelativePanel.AlignLeftWithPanel="True"
                                         Margin="10,10,0,50">
-                                <Image Name="imgLogo"
+                                    <Image Name="imgLogo"
                                         Width="35"
                                         Height="35"
                                         Source="Assets\logo.png">
 
-                                </Image>
-                                <TextBlock Name="txtbTitle"
+                                    </Image>
+                                    <TextBlock Name="txtbTitle"
                                         Text="{Binding Title}"
                                         Margin="10,0,0,0"
                                         FontSize="20"
                                         VerticalAlignment="Center">
-                                </TextBlock>
-                            </StackPanel>
-                            <TextBlock RelativePanel.AlignBottomWithPanel="True"
+                                    </TextBlock>
+                                </StackPanel>
+                                <TextBlock RelativePanel.AlignBottomWithPanel="True"
                                        RelativePanel.AlignRightWithPanel="True"
                                        TextWrapping="Wrap"
                                        Text="{Binding SubTitle}"
                                        Margin="0,0,20,30">
 
-                            </TextBlock>
-                        </RelativePanel>
+                                </TextBlock>
+                            </RelativePanel>
+                            <RelativePanel Padding="0">
+                                <StackPanel Name="favo" Orientation="Horizontal" Padding="15,14,15,12" Tapped="favo_Tapped" RelativePanel.AlignLeftWithPanel="True">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="" Margin="6,3,4,0"></TextBlock>
+                                    <TextBlock>收藏</TextBlock>
+                                </StackPanel>
+                                <StackPanel Name="setting" Orientation="Horizontal" Padding="15,14,15,12" Tapped="setting_Tapped" RelativePanel.AlignRightWithPanel="True">
+                                    <TextBlock Text="" FontFamily="Segoe MDL2 Assets" Margin="0,3,4,0"></TextBlock>
+                                    <TextBlock Margin="0,0,10,0">设置</TextBlock>
+                                </StackPanel>
+                            </RelativePanel>
+                        </StackPanel>
                     </ListView.Header>
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">

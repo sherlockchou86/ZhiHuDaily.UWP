@@ -68,11 +68,20 @@ namespace ZhiHuDaily.UWP.Mobile
             this.Frame.Navigate(typeof(StoryPage), new object[] { e.ClickedItem as Story });
         }
         /// <summary>
-        /// 
+        /// 刷新页面数据
         /// </summary>
         public void RefreshPage()
         {
             _viewModel.Update();
+        }
+        /// <summary>
+        /// 下拉刷新
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listStories_PullDownRefresh(object sender, RoutedEventArgs e)
+        {
+            RefreshPage();
         }
     }
 }

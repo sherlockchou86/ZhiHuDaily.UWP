@@ -5,7 +5,19 @@
     xmlns:local="using:ZhiHuDaily.UWP.Mobile"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:ZhiHuDaily.UWP.Core.Controls"
     mc:Ignorable="d">
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                    <!--<SlideNavigationTransitionInfo/>-->
+                    <CommonNavigationTransitionInfo/>
+                    <!--<ContinuumNavigationTransitionInfo/>-->
+                </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
     <Page.Resources>
         <local:TopStoryFillColor x:Key="topfill"></local:TopStoryFillColor>
         <local:ChildrenVisibility x:Key="childrenVisibility"></local:ChildrenVisibility>
@@ -29,13 +41,16 @@
             </TextBlock>
         </RelativePanel>
         <!--内容-->
-        <ListView Grid.Row="1"
+        <controls:ListViewControl Grid.Row="1"
                   Name="listStories"
+                  IsShowPullDownRefresh="True"
+                  IsShowPullUpLoadMore="False"
+                  PullDownRefresh="listStories_PullDownRefresh"
                   ItemsSource="{Binding Stories}"
                   SelectionMode="None"
                   IsItemClickEnabled="True"
                   ItemClick="listStories_ItemClick">
-            <ListView.Header>
+            <controls:ListViewControl.Header>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"></RowDefinition>
@@ -114,8 +129,8 @@
                         </GridView>
                     </StackPanel>
                 </Grid>
-            </ListView.Header>
-            <ListView.ItemTemplate>
+            </controls:ListViewControl.Header>
+            <controls:ListViewControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -158,8 +173,8 @@
                         </RelativePanel>
                     </Grid>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemContainerStyle>
+            </controls:ListViewControl.ItemTemplate>
+            <controls:ListViewControl.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="Margin" Value="8,4,8,4"></Setter>
                     <Setter Property="Padding" Value="0"></Setter>
@@ -173,8 +188,8 @@
                         </Setter.Value>
                     </Setter>
                 </Style>
-            </ListView.ItemContainerStyle>
-        </ListView>
+            </controls:ListViewControl.ItemContainerStyle>
+        </controls:ListViewControl>
         <ProgressRing Grid.Row="1"
                       Height="60"
                       Width="60"

@@ -5,11 +5,21 @@
     xmlns:local="using:ZhiHuDaily.UWP.Mobile"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:pr="using:PullToRefresh.UWP"
     xmlns:controls="using:ZhiHuDaily.UWP.Core.Controls"
     mc:Ignorable="d"
     RequestedTheme="{Binding APPTheme}"
     Loaded="Page_Loaded">
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                    <!--<SlideNavigationTransitionInfo/>-->
+                    <CommonNavigationTransitionInfo/>
+                    <!--<ContinuumNavigationTransitionInfo/>-->
+                </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
     <Page.Resources>
         <local:TopStoryFillColor x:Key="topfill"></local:TopStoryFillColor>
         <local:ChildrenVisibility x:Key="childrenVisibility"></local:ChildrenVisibility>
